@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雨燕直播 · 轻快赛事新体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f6f8;
+            color: #1f2a3a;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 卡片公用 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e6e9ee;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2rem 2.2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 3.5rem 2rem 2.8rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(145deg, #ffffff, #fafbfd);
+            border: 1px solid #e2e6ed;
+            border-radius: 28px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f1a2b;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #4c5a6f;
+            max-width: 600px;
+            margin: 0 auto 1.8rem;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #eef1f5;
+            color: #1f2a3a;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #dce1ea;
+        }
+
+        /* 网格 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #0f1a2b;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.45rem;
+            color: #162234;
+        }
+
+        .card p {
+            margin-bottom: 0.9rem;
+            color: #2c3a4e;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding-left: 1.4rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: #2c3a4e;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #5f6f88;
+            font-weight: 700;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eef0f4;
+            padding: 1rem 0;
+        }
+
+        .faq-item:first-of-type {
+            padding-top: 0;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #0f1a2b;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-a {
+            color: #3f4d62;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem 2rem;
+            padding: 1.8rem 0 0.6rem;
+            font-size: 0.95rem;
+            color: #4f5e74;
+            border-top: 1px solid #e2e6ed;
+            margin-top: 1.2rem;
+        }
+
+        .footer-links a {
+            color: #1f2a3a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #5f6f88;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2.2rem;
+            font-size: 0.85rem;
+            color: #6b7a90;
+        }
+
+        a {
+            color: #1f2a3a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #b6c1d0;
+        }
+
+        a:hover {
+            text-decoration-color: #1f2a3a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 780px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .hero {
+                padding: 2.4rem 1.2rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="tagline">流畅 · 聚焦 · 轻量</div>
+        <h1>雨燕直播</h1>
+        <p class="sub">为体育爱好者打造的即时赛事信息平台，聚合多路信号与数据，让每一场比赛都能更清晰地被感知。</p>
+    </div>
+
+    <!-- 优势区 两列 -->
+    <div class="grid-2">
+        <div class="card">
+            <h2>专注赛事节奏</h2>
+            <p>从开赛哨声到终场统计，<a href="https://beta-yuyan.com">雨燕直播</a>围绕赛事进程组织内容，减少无关信息的干扰。你可以在同一界面下了解比分、实时动态以及关键节点，不必反复切换页面。</p>
+            <p>无论是足球、篮球还是网球，平台均采用模块化信息结构，帮助你在最短时间内建立对比赛局势的认知。</p>
+        </div>
+        <div class="card">
+            <h2>多源信号整合</h2>
+            <p>平台聚合来自不同渠道的直播信号与数据图层，你可以根据网络环境和偏好选择合适的线路。每条信号均标注来源与延迟参考，方便自行判断。</p>
+            <p>同时支持画中画、后台音频等轻量功能，适应手机、平板与桌面环境，不占用过多系统资源。</p>
+        </div>
+    </div>
+
+    <!-- 说明区 + 特点三列 -->
+    <div class="card" style="margin-bottom: 2rem;">
+        <h2>围绕赛事场景的设计</h2>
+        <p>雨燕直播从日常观赛习惯出发，将「实时性」与「低干扰」作为核心设计原则。页面布局优先展示比分、剩余时间、控球率等关键指标，次要信息折叠在二级面板中，可随时展开。平台不嵌入自动播放的广告或弹窗，保持观赛界面的整洁。</p>
+        <p>此外，每场比赛均保留简明的文字时间线，方便错过开场的用户快速回溯重要事件。数据面板由第三方体育数据服务商提供，更新频率为秒级，延迟控制在可接受范围内。</p>
+    </div>
+
+    <div class="grid-3">
+        <div class="card">
+            <h3>多语言赛事信息</h3>
+            <p>主要赛事覆盖中文、英文及当地语言解说信号，并附有基础数据翻译对照。你可以根据语言熟悉度自由选择，不必受限于单一解说视角。</p>
+        </div>
+        <div class="card">
+            <h3>低流量模式</h3>
+            <p>针对移动网络环境，提供低码率视频流与纯文本数据模式。仅保留比分与关键事件文字更新，流量消耗降低约70%，适合在通勤或户外使用。</p>
+        </div>
+        <div class="card">
+            <h3>收藏与提醒</h3>
+            <p>将关注的球队或联赛加入收藏夹后，平台会在开赛、中场及终场时发送轻提醒（需浏览器通知授权）。不打扰非比赛时段，避免无意义推送。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card" style="margin-bottom: 2rem;">
+        <h2>常见问题摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">雨燕直播需要注册账户吗？</div>
+            <div class="faq-a">目前无需注册即可浏览大部分赛事信息与公共数据面板。收藏提醒等个性化功能需要简单的本地存储授权，不强制创建账户。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">直播信号是否保证全程可用？</div>
+            <div class="faq-a">平台聚合的第三方信号源会尽量保持稳定，但因网络波动或版权限制，个别线路可能临时中断。建议准备一条备用线路，或切换至文字直播模式。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">移动端与桌面端体验是否一致？</div>
+            <div class="faq-a">核心功能在两端保持一致，移动端针对竖屏优化了信息层级，操作区域放大，便于单手使用。桌面端则提供更宽的数据对比视图。</div>
+        </div>
+        <div style="margin-top: 1.2rem; font-size: 0.95rem; color: #3f4d62; border-top: 1px solid #eef0f4; padding-top: 1rem;">
+            更多细节及功能说明，可访问 <a href="https://beta-yuyan.com">雨燕直播</a> 内部帮助页面。
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <span>关于平台</span>
+        <a href="https://beta-yuyan.com">雨燕直播</a>
+        <span>服务条款</span>
+        <span>数据合作</span>
+        <span>联系支持</span>
+    </div>
+    <div class="footer-note">
+        本页面为产品介绍页，所提及功能以实际平台版本为准。体育数据来源具有实时性，仅供参考。
+    </div>
+</div>
+</body>
+</html>
